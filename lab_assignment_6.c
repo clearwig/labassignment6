@@ -12,16 +12,26 @@ int search(int numbers[], int low, int high, int value)
 {
 	if (low > high)
 	{
-		// Base case: element not found
-		return -1;
+		return -1; // Base case: element not found
+	}
+
+	if (low == high)
+	{
+		if (numbers[low] == value)
+		{
+			return low; // Element found at index low
+		}
+		else
+		{
+			return -1; // Element not found
+		}
 	}
 
 	int mid = low + (high - low) / 2;
 
 	if (numbers[mid] == value)
 	{
-		// Element found at mid index
-		return mid;
+		return mid; // Element found at mid index
 	}
 	else if (numbers[mid] < value)
 	{
