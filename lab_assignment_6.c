@@ -10,28 +10,29 @@ Professor Torosdagli
 
 int search(int numbers[], int low, int high, int value)
 {
-	if (low <= high)
+	if (low > high)
 	{
-		int mid = low + (high - low) / 2;
-
-		if (numbers[mid] == value)
-		{
-			// Element found at mid index
-			return mid;
-		}
-		else if (numbers[mid] < value)
-		{
-			// Search the right half of the array
-			return search(numbers, mid + 1, high, value);
-		}
-		else
-		{
-			// Search the left half of the array
-			return search(numbers, low, mid - 1, value);
-		}
+		// Base case: element not found
+		return -1;
 	}
 
-	return -1;
+	int mid = low + (high - low) / 2;
+
+	if (numbers[mid] == value)
+	{
+		// Element found at mid index
+		return mid;
+	}
+	else if (numbers[mid] < value)
+	{
+		// Search the right half of the array
+		return search(numbers, mid + 1, high, value);
+	}
+	else
+	{
+		// Search the left half of the array
+		return search(numbers, low, mid - 1, value);
+	}
 }
 
 void printArray(int numbers[], int sz)
